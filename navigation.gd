@@ -12,9 +12,16 @@ func _process(delta):
 	if path.size() > 1:
 		var to_walk = delta * SPEED
 		while to_walk > 0 and path.size() >= 2:
+			# Get from and to points
 			var pfrom = path[path.size() - 1]
 			var pto = path[path.size() - 2]
+			
+			# Turn the ant to look where it is going
+			$ant.look_at(pto)
+			
+			# Get distance to next point
 			var distance = pfrom.distance_to(pto)
+			
 			if distance <= to_walk:
 				path.remove(path.size() - 1)
 				to_walk -= distance
