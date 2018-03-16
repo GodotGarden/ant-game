@@ -8,7 +8,7 @@ var end = Vector2()
 var path = []
 
 
-func _process(delta):
+func _process(delta):	
 	if path.size() > 1:
 		var to_walk = delta * SPEED
 		while to_walk > 0 and path.size() >= 2:
@@ -48,6 +48,10 @@ func _update_path():
 
 
 func _input(event):
+	# Mouse in viewport coordinates
+	if event is InputEventMouseButton:
+       print("Mouse Click/Unclick at: ", event.position)
+	
 	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
 		begin = $ant.position
 		# Mouse to local navigation coordinates
