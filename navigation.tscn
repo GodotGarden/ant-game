@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://navigation.gd" type="Script" id=1]
 [ext_resource path="res://path.png" type="Texture" id=2]
 [ext_resource path="res://pheremones.gd" type="Script" id=3]
-[ext_resource path="res://ant-2-top-view.png" type="Texture" id=4]
-[ext_resource path="res://ant.gd" type="Script" id=5]
+[ext_resource path="res://evaporation.gd" type="Script" id=4]
+[ext_resource path="res://ant-2-top-view.png" type="Texture" id=5]
+[ext_resource path="res://ant.gd" type="Script" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -29,6 +30,7 @@ enabled = true
 
 [node name="pheremones" type="Line2D" parent="." index="2"]
 
+editor/display_folded = true
 rotation = 1.5708
 points = PoolVector2Array(  )
 width = 3.0
@@ -40,13 +42,35 @@ script = ExtResource( 3 )
 _sections_unfolded = [ "Transform" ]
 targetPath = NodePath("../ant")
 
+[node name="secretion" type="Timer" parent="pheremones" index="0"]
+
+process_mode = 1
+wait_time = 0.15
+one_shot = false
+autostart = true
+script = ExtResource( 4 )
+targetPath = NodePath("../pheremones")
+
+[node name="evaporation" type="Timer" parent="pheremones" index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+script = ExtResource( 4 )
+targetPath = NodePath("../pheremones")
+
 [node name="ant" type="Sprite" parent="." index="3"]
 
 position = Vector2( 228.464, 132.594 )
 rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
+texture = ExtResource( 5 )
+script = ExtResource( 6 )
 _sections_unfolded = [ "Offset", "Transform" ]
+
+[connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
+
+[connection signal="timeout" from="pheremones/evaporation" to="pheremones" method="_on_evaporation_timeout"]
 
 
