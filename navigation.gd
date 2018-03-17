@@ -6,9 +6,11 @@ const SPEED = 200.0
 var begin = Vector2()
 var end = Vector2()
 var path = []
+export(NodePath) var targetPath
 
-
-func _process(delta):	
+func _process(delta):
+	var ant = get_node(targetPath)
+	
 	if path.size() > 1:
 		var to_walk = delta * SPEED
 		while to_walk > 0 and path.size() >= 2:
@@ -17,7 +19,7 @@ func _process(delta):
 			var pto = path[path.size() - 2]
 			
 			# Turn the ant to look where it is going
-			$ant.look_at(pto)
+			ant.look_at(pto)
 			
 			# Get distance to next point
 			var distance = pfrom.distance_to(pto)
@@ -30,7 +32,8 @@ func _process(delta):
 				to_walk = 0
 		
 		var atpos = path[path.size() - 1]
-		$ant.position = atpos
+		
+		ant.position = atpos
 		
 		if path.size() < 2:
 			path = []
@@ -40,8 +43,8 @@ func _process(delta):
 
 
 func _update_path():
-	var p = get_simple_path(begin, end, true)
-	path = Array(p) # PoolVector2Array too complex to use, convert to regular array
+	var simple_path = get_simple_path(begin, end, true)
+	path = Array(simple_path) # PoolVector2Array too complex to use, convert to regular array
 	path.invert()
 	
 	set_process(true)

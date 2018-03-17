@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://navigation.gd" type="Script" id=1]
 [ext_resource path="res://path.png" type="Texture" id=2]
 [ext_resource path="res://ant-2-top-view.png" type="Texture" id=3]
+[ext_resource path="res://ant.gd" type="Script" id=4]
+[ext_resource path="res://pheremones.gd" type="Script" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -13,10 +15,11 @@ outlines = [ PoolVector2Array( 221.41, 488.446, 147.386, 408.87, 145.584, 224.31
 [node name="navigation" type="Navigation2D" index="0"]
 
 script = ExtResource( 1 )
+targetPath = NodePath("ant")
 
 [node name="path" type="Sprite" parent="." index="0"]
 
-position = Vector2( 429.585, 287.32 )
+position = Vector2( 430.025, 287.32 )
 texture = ExtResource( 2 )
 
 [node name="navpoly" type="NavigationPolygonInstance" parent="." index="1"]
@@ -31,6 +34,20 @@ rotation = 1.5708
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -26 )
+script = ExtResource( 4 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="pheremones" type="Line2D" parent="." index="3"]
+
+rotation = 1.5708
+points = PoolVector2Array(  )
+width = 3.0
+default_color = Color( 0.4, 0.5, 1, 1 )
+texture_mode = 1118044160
+sharp_limit = 2.0
+round_precision = 8
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+targetPath = NodePath("../ant")
 
 
