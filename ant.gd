@@ -1,4 +1,4 @@
-extends Sprite
+extends Area2D
 
 # How much food the ant stomach can hold
 var stomach_size = 10
@@ -28,3 +28,8 @@ func _on_digestion_timeout():
 	
 	# Update stomach contents label with current level
 	stomach_contents_label.set_text(str(self.stomach_contents))
+
+
+func _on_food_morsel_eaten():
+	# Ingest food
+	self.stomach_contents += 1

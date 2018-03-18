@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://navigation.gd" type="Script" id=1]
 [ext_resource path="res://path.png" type="Texture" id=2]
 [ext_resource path="res://pheremones.gd" type="Script" id=3]
-[ext_resource path="res://images/ant-2-top-view.png" type="Texture" id=4]
-[ext_resource path="res://ant.gd" type="Script" id=5]
-[ext_resource path="res://food_morsel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://food.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ant.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -30,6 +29,7 @@ enabled = true
 
 [node name="pheremones" type="Line2D" parent="." index="2"]
 
+editor/display_folded = true
 rotation = 1.5708
 points = PoolVector2Array(  )
 width = 3.0
@@ -55,24 +55,7 @@ wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="ant" type="Sprite" parent="." index="3"]
-
-position = Vector2( 228.464, 132.594 )
-rotation = 1.5708
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 4 )
-script = ExtResource( 5 )
-_sections_unfolded = [ "Offset", "Transform" ]
-stomach_contents_label_path = NodePath("../stomach contents")
-
-[node name="digestion" type="Timer" parent="ant" index="0"]
-
-process_mode = 1
-wait_time = 1.0
-one_shot = false
-autostart = true
-
-[node name="stomach contents" type="Label" parent="." index="4"]
+[node name="stomach contents" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -90,8 +73,9 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="Food" type="Container" parent="." index="5"]
+[node name="Food" type="Container" parent="." index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -105,22 +89,22 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 
-[node name="food morsel" parent="Food" index="0" instance=ExtResource( 6 )]
+[node name="food morsel" parent="Food" index="0" instance=ExtResource( 4 )]
 
 position = Vector2( 217.278, 469.239 )
 
-[node name="food morsel2" parent="Food" index="1" instance=ExtResource( 6 )]
+[node name="food morsel2" parent="Food" index="1" instance=ExtResource( 4 )]
 
 position = Vector2( 588.085, 488.639 )
 
-[node name="food morsel3" parent="Food" index="2" instance=ExtResource( 6 )]
+[node name="food morsel3" parent="Food" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 671.571, 202.576 )
+
+[node name="ant" parent="." index="5" instance=ExtResource( 5 )]
 
 [connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
 
 [connection signal="timeout" from="pheremones/evaporation" to="pheremones" method="_on_evaporation_timeout"]
-
-[connection signal="timeout" from="ant/digestion" to="ant" method="_on_digestion_timeout"]
 
 
