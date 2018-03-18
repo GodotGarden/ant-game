@@ -55,26 +55,9 @@ wait_time = 1.0
 one_shot = false
 autostart = true
 
-[node name="stomach contents" type="Label" parent="." index="3"]
+[node name="Food" type="Container" parent="." index="3"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 40.0
-margin_bottom = 14.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-
-[node name="Food" type="Container" parent="." index="4"]
-
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -100,7 +83,44 @@ position = Vector2( 588.085, 488.639 )
 
 position = Vector2( 671.571, 202.576 )
 
-[node name="ant" parent="." index="5" instance=ExtResource( 5 )]
+[node name="ant" parent="." index="4" instance=ExtResource( 5 )]
+
+stomach_contents_label_path = NodePath("../HUD/stomach contents")
+
+[node name="HUD" type="Control" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+_sections_unfolded = [ "Anchor", "Margin", "Rect" ]
+
+[node name="stomach contents" type="Label" parent="HUD" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Visibility" ]
 
 [connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
 
