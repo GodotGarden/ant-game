@@ -75,7 +75,6 @@ max_lines_visible = -1
 
 [node name="Food" type="Container" parent="." index="4"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -106,5 +105,11 @@ position = Vector2( 671.571, 202.576 )
 [connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
 
 [connection signal="timeout" from="pheremones/evaporation" to="pheremones" method="_on_evaporation_timeout"]
+
+[connection signal="eaten" from="Food/food morsel" to="ant" method="_on_food_morsel_eaten"]
+
+[connection signal="eaten" from="Food/food morsel2" to="ant" method="_on_food_morsel_eaten"]
+
+[connection signal="eaten" from="Food/food morsel3" to="ant" method="_on_food_morsel_eaten"]
 
 
