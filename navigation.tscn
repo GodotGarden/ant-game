@@ -62,9 +62,37 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 _sections_unfolded = [ "Offset", "Transform" ]
+stomach_contents_label_path = NodePath("../stomach contents")
+
+[node name="digestion" type="Timer" parent="ant" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="stomach contents" type="Label" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 14.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
 
 [connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
 
 [connection signal="timeout" from="pheremones/evaporation" to="pheremones" method="_on_evaporation_timeout"]
+
+[connection signal="timeout" from="ant/digestion" to="ant" method="_on_digestion_timeout"]
 
 
