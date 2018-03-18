@@ -10,7 +10,7 @@ config_version=3
 
 [application]
 
-config/name="Navigation Polygon (2D)"
+config/name="Ant World"
 run/main_scene="res://navigation.tscn"
 config/icon="res://ant-2-top-view.png"
 
