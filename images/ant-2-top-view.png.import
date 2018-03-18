@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ant-2-top-view.png-69bb7d42626597138e9ea2c97f3caee3.stex"
+path="res://.import/ant-2-top-view.png-e911a795bbf413ac7ab04051533e07ce.stex"
 
 [deps]
 
-source_file="res://ant-2-top-view.png"
+source_file="res://images/ant-2-top-view.png"
 source_md5="d8e53f52f1cf9330ea6edf78f66a9c15"
 
-dest_files=[ "res://.import/ant-2-top-view.png-69bb7d42626597138e9ea2c97f3caee3.stex" ]
+dest_files=[ "res://.import/ant-2-top-view.png-e911a795bbf413ac7ab04051533e07ce.stex" ]
 dest_md5="39ced4aece3de5c497f2023300a1f53e"
 
 [params]

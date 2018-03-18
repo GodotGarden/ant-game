@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://navigation.gd" type="Script" id=1]
 [ext_resource path="res://path.png" type="Texture" id=2]
 [ext_resource path="res://pheremones.gd" type="Script" id=3]
-[ext_resource path="res://ant-2-top-view.png" type="Texture" id=4]
+[ext_resource path="res://images/ant-2-top-view.png" type="Texture" id=4]
 [ext_resource path="res://ant.gd" type="Script" id=5]
+[ext_resource path="res://food_morsel.tscn" type="PackedScene" id=6]
 
 [sub_resource type="NavigationPolygon" id=1]
 
@@ -88,6 +89,33 @@ size_flags_vertical = 4
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="Food" type="Container" parent="." index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 797.0
+margin_bottom = 599.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="food morsel" parent="Food" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 217.278, 469.239 )
+
+[node name="food morsel2" parent="Food" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 588.085, 488.639 )
+
+[node name="food morsel3" parent="Food" index="2" instance=ExtResource( 6 )]
+
+position = Vector2( 671.571, 202.576 )
 
 [connection signal="timeout" from="pheremones/secretion" to="pheremones" method="_on_secretion_timeout"]
 
